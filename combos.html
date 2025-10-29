@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERK FOOD</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #d32f2f;
+            --primary-dark: #b71c1c;
+            --secondary: #ffc107;
+            --light: #f5f5f5;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.8rem;
+        }
+
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .section-title {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+
+        .card {
+            border: none;
+            transition: transform 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            height: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .price-tag {
+            background-color: var(--primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+        }
+
+        .combo-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: var(--secondary);
+            color: #000;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+        }
+
+        .flavor-icon {
+            font-size: 1.5rem;
+            margin-right: 10px;
+            color: var(--primary);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navegação -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+
+
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-pizza-slice me-2"></i>ERK FOOD
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#pizzas.html">Pizzas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#combos.html">Combos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contato">Contato</a>
+                    </li>
+                </ul>
+                <button class="btn btn-outline-light ms-3">
+                    <i class="fas fa-phone me-1"></i> Faça seu pedido
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sabores Section -->
+    <section id="combos" class="py-5 bg-light">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h2 class="section-title">Combos Especiais</h2>
+                <button class="btn btn-outline-dark ms-3">
+                    <i class="fas fa-home me-1" onclick="window.location.href='index.html'"></i>
+                </button>
+            </div>
+
+            <p class="lead mb-5">Economize com nossos combos perfeitos para toda a família</p>
+
+            <div class="row g-4">
+                <!-- Combo 1 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card border-warning">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1595854341625-f33ee10dbf94?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                                class="card-img-top" alt="Combo Família">
+                            <span class="combo-badge">Mais Popular</span>
+                            <span class="price-tag">R$ 89,90</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Combo Família</h5>
+                            <p class="card-text">2 pizzas grandes (escolha os sabores) + 1 refrigerante 2L + 1 borda
+                                recheada.</p>
+                            <ul class="list-group list-group-flush mb-3">
+                                <li class="list-group-item"><i class="fas fa-pizza-slice flavor-icon"></i> 2 Pizzas
+                                    Grandes</li>
+                                <li class="list-group-item"><i class="fas fa-wine-bottle flavor-icon"></i> 1
+                                    Refrigerante 2L</li>
+                                <li class="list-group-item"><i class="fas fa-cheese flavor-icon"></i> Borda Recheada
+                                </li>
+                            </ul>
+                            <button class="btn btn-warning w-100">Comprar Combo</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Combo 2 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card border-primary">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1565299585323-38174c13fae8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                                class="card-img-top" alt="Combo Casal">
+                            <span class="price-tag">R$ 59,90</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Combo Casal</h5>
+                            <p class="card-text">1 pizza média + 1 refrigerante 1,5L + 1 sobremesa (escolha entre
+                                brownie ou mousse).</p>
+                            <ul class="list-group list-group-flush mb-3">
+                                <li class="list-group-item"><i class="fas fa-pizza-slice flavor-icon"></i> 1 Pizza Média
+                                </li>
+                                <li class="list-group-item"><i class="fas fa-wine-bottle flavor-icon"></i> 1
+                                    Refrigerante 1,5L</li>
+                                <li class="list-group-item"><i class="fas fa-ice-cream flavor-icon"></i> 1 Sobremesa
+                                </li>
+                            </ul>
+                            <button class="btn btn-primary w-100">Comprar Combo</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Combo 3 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card border-success">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1593504049359-74330189a345?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                                class="card-img-top" alt="Combo Individual">
+                            <span class="price-tag">R$ 34,90</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Combo Individual</h5>
+                            <p class="card-text">1 pizza pequena + 1 refrigerante 350ml + 1 porção de batata frita.</p>
+                            <ul class="list-group list-group-flush mb-3">
+                                <li class="list-group-item"><i class="fas fa-pizza-slice flavor-icon"></i> 1 Pizza
+                                    Pequena</li>
+                                <li class="list-group-item"><i class="fas fa-wine-bottle flavor-icon"></i> 1
+                                    Refrigerante 350ml</li>
+                                <li class="list-group-item"><i class="fas fa-french-fries flavor-icon"></i> Batata Frita
+                                </li>
+                            </ul>
+                            <button class="btn btn-success w-100">Comprar Combo</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- More combos button -->
+            <div class="text-center mt-5">
+                <button class="btn btn-outline-primary">Mostrar mais</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <p>&copy; 2025 ERK FOOD. Todos os direitos reservados. Centro Universitário Planalto do Distrito
+                        Federal</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="text-white"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

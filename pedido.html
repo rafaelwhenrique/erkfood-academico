@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERK FOOD - Contato</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #d32f2f;
+            --primary-dark: #b71c1c;
+            --secondary: #ffc107;
+            --light: #f5f5f5;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
+        }
+
+        .section-title {
+            position: relative;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+        }
+
+        .contact-card {
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: none;
+            overflow: hidden;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgba(211, 47, 47, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .contact-icon i {
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .delivery-options .option-card {
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+            height: 100%;
+        }
+
+        .delivery-options .option-card:hover,
+        .delivery-options .option-card.selected {
+            border-color: var(--primary);
+            background-color: rgba(211, 47, 47, 0.05);
+        }
+
+        .delivery-options .option-card i {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .payment-methods img {
+            height: 30px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        .tracking-steps {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin: 30px 0;
+        }
+
+        .tracking-steps:before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #e9ecef;
+            z-index: 1;
+        }
+
+        .tracking-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            transition: all 0.3s;
+        }
+
+        .step-icon.active {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .step-text {
+            font-size: 0.85rem;
+            text-align: center;
+        }
+
+        .map-container {
+            border-radius: 10px;
+            overflow: hidden;
+            height: 300px;
+            background-color: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #f8f9fa;
+            color: #333;
+            margin-right: 10px;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .form-floating>.form-control:focus~label,
+        .form-floating>.form-control:not(:placeholder-shown)~label {
+            color: var(--primary);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 0.25rem rgba(211, 47, 47, 0.25);
+        }
+
+        .order-summary {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .order-total {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 2px solid #dee2e6;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Seção de Contato Aprimorada -->
+    <section id="contato" class="py-5">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h2 class="section-title d-inline-block">Faça seu Pedido</h2>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Informações de Contato -->
+                <div class="col-lg-5 mb-4">
+                    <div class="contact-card p-4 h-100">
+                        <h3 class="mb-4">Informações de Contato</h3>
+
+                        <div class="d-flex mb-4">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="ms-3">
+                                <h5>Telefone</h5>
+                                <p class="mb-1">(11) 1234-5678</p>
+                                <p class="mb-0">(11) 98765-4321 (WhatsApp)</p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex mb-4">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="ms-3">
+                                <h5>Endereço</h5>
+                                <p>Rua das Pizzas, 123 - Centro, São Paulo - SP</p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex mb-4">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="ms-3">
+                                <h5>Horário de Funcionamento</h5>
+                                <p class="mb-1">Segunda a Sexta: 18h às 23h</p>
+                                <p class="mb-0">Sábados e Domingos: 12h às 23h</p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex mb-4">
+                            <div class="contact-icon">
+                                <i class="fas fa-truck"></i>
+                            </div>
+                            <div class="ms-3">
+                                <h5>Área de Entrega</h5>
+                                <p>Entregamos em um raio de 10km</p>
+                                <small class="text-muted">Consulte a disponibilidade para seu endereço</small>
+                            </div>
+                        </div>
+
+                        <!-- Mapa -->
+                        <div class="mb-4">
+                            <h5 class="mb-3">Nossa Localização</h5>
+                            <div class="map-container">
+                                <div class="text-center text-muted">
+                                    <i class="fas fa-map-marked-alt fa-3x mb-3"></i>
+                                    <p>Mapa interativo da nossa localização</p>
+                                    <small>Integração com Google Maps</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Redes Sociais -->
+                        <div>
+                            <h5 class="mb-3">Siga-nos</h5>
+                            <div class="social-links">
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                                <a href="#"><i class="fab fa-tiktok"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Formulário de Pedido -->
+                <div class="col-lg-7">
+                    <div class="contact-card p-4">
+                        <h3 class="mb-4">Finalizar Pedido</h3>
+
+                        <!-- Acompanhamento do Pedido -->
+                        <div class="tracking-steps">
+                            <div class="tracking-step">
+                                <div class="step-icon active">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <span class="step-text">Dados</span>
+                            </div>
+                            <div class="tracking-step">
+                                <div class="step-icon">
+                                    <i class="fas fa-clipboard-check"></i>
+                                </div>
+                                <span class="step-text">Revisão</span>
+                            </div>
+                            <div class="tracking-step">
+                                <div class="step-icon">
+                                    <i class="fas fa-credit-card"></i>
+                                </div>
+                                <span class="step-text">Pagamento</span>
+                            </div>
+                            <div class="tracking-step">
+                                <div class="step-icon">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <span class="step-text">Confirmação</span>
+                            </div>
+                        </div>
+
+                        <form id="order-form">
+                            <!-- Dados Pessoais -->
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="name" placeholder="Nome Completo"
+                                            required>
+                                        <label for="name">Nome Completo</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="form-floating">
+                                        <input type="tel" class="form-control" id="phone" placeholder="Telefone"
+                                            required>
+                                        <label for="phone">Telefone</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <div class="form-floating">
+                                    <input type="email" class="form-control" id="email" placeholder="E-mail" required>
+                                    <label for="email">E-mail</label>
+                                </div>
+                            </div>
+
+                            <!-- Endereço (aparece apenas para delivery) -->
+                            <div id="address-section" class="mb-3">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="address"
+                                        placeholder="Endereço Completo">
+                                    <label for="address">Endereço Completo</label>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-md-4">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="number" placeholder="Número">
+                                            <label for="number">Número</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="complement"
+                                                placeholder="Complemento">
+                                            <label for="complement">Complemento</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Detalhes do Pedido -->
+                            <div class="mb-3">
+                                <div class="form-floating">
+                                    <textarea class="form-control" id="order-details" placeholder="Detalhes do Pedido"
+                                        style="height: 100px"></textarea>
+                                    <label for="order-details">Detalhes do Pedido</label>
+                                </div>
+                                <div class="form-text">
+                                    Descreva os sabores, tamanhos e observações especiais
+                                </div>
+                            </div>
+
+                            <!-- Instruções de Entrega -->
+                            <div class="mb-3">
+                                <div class="form-floating">
+                                    <textarea class="form-control" id="delivery-instructions"
+                                        placeholder="Instruções de Entrega" style="height: 80px"></textarea>
+                                    <label for="delivery-instructions">Instruções de Entrega</label>
+                                </div>
+                                <div class="form-text">
+                                    Ponto de referência, instruções para o entregador, etc.
+                                </div>
+                            </div>
+
+                            <!-- Resumo do Pedido -->
+                            <div class="order-summary mb-4">
+                                <h5 class="mb-3">Resumo do Pedido</h5>
+                                <div class="order-item">
+                                    <span>Pizza Margherita</span>
+                                    <span>R$ 39,90</span>
+                                </div>
+                                <div class="order-item">
+                                    <span>Pizza Pepperoni</span>
+                                    <span>R$ 44,90</span>
+                                </div>
+                                <div class="order-item">
+                                    <span>Refrigerante 2L</span>
+                                    <span>R$ 12,00</span>
+                                </div>
+                                <div class="order-item">
+                                    <span>Taxa de Entrega</span>
+                                    <span id="delivery-fee">R$ 5,00</span>
+                                </div>
+                                <div class="order-total">
+                                    <span>Total</span>
+                                    <span id="order-total">R$ 101,80</span>
+                                </div>
+                            </div>
+
+                            <!-- Métodos de Pagamento -->
+                            <div class="mb-4">
+                                <h5 class="mb-3">Forma de Pagamento</h5>
+                                <div class="payment-methods">
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="radio" name="payment" id="cash" checked>
+                                        <label class="form-check-label" for="cash">
+                                            Dinheiro
+                                        </label>
+                                    </div>
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="radio" name="payment" id="card">
+                                        <label class="form-check-label" for="card">
+                                            Cartão de Crédito/Débito
+                                        </label>
+                                    </div>
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="radio" name="payment" id="pix">
+                                        <label class="form-check-label" for="pix">
+                                            PIX
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Informações de Troco (aparece apenas para pagamento em dinheiro) -->
+                            <div id="change-section" class="mb-4">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="change" placeholder="Precisa de troco?">
+                                    <label for="change">Precisa de troco? Para quanto?</label>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-lg w-100 py-3">
+                                <i class="fas fa-paper-plane me-2"></i> Finalizar Pedido
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Seleção de opção de entrega
+        document.querySelectorAll('.option-card').forEach(card => {
+            card.addEventListener('click', function () {
+                // Remove a seleção de todos os cards
+                document.querySelectorAll('.option-card').forEach(c => {
+                    c.classList.remove('selected');
+                });
+
+                // Adiciona a seleção ao card clicado
+                this.classList.add('selected');
+
+                // Atualiza a taxa de entrega
+                const option = this.getAttribute('data-option');
+                const deliveryFee = document.getElementById('delivery-fee');
+                const orderTotal = document.getElementById('order-total');
+
+                if (option === 'delivery') {
+                    deliveryFee.textContent = 'R$ 5,00';
+                    orderTotal.textContent = 'R$ 101,80';
+                    document.getElementById('address-section').style.display = 'block';
+                } else {
+                    deliveryFee.textContent = 'R$ 0,00';
+                    orderTotal.textContent = 'R$ 96,80';
+                    if (option === 'pickup') {
+                        document.getElementById('address-section').style.display = 'none';
+                    }
+                }
+            });
+        });
+
+        // Mostrar/ocultar campo de troco baseado no método de pagamento
+        document.getElementById('cash').addEventListener('change', function () {
+            document.getElementById('change-section').style.display = this.checked ? 'block' : 'none';
+        });
+
+        document.getElementById('card').addEventListener('change', function () {
+            document.getElementById('change-section').style.display = this.checked ? 'none' : 'block';
+        });
+
+        document.getElementById('pix').addEventListener('change', function () {
+            document.getElementById('change-section').style.display = this.checked ? 'none' : 'block';
+        });
+
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', function () {
+            // Seleciona delivery por padrão
+            document.querySelector('[data-option="delivery"]').classList.add('selected');
+            // Oculta campo de troco inicialmente (não é dinheiro selecionado por padrão)
+            document.getElementById('change-section').style.display = 'none';
+        });
+
+        // Validação do formulário
+        document.getElementById('order-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Validação básica
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+
+            if (!name || !phone || !email) {
+                alert('Por favor, preencha todos os campos obrigatórios.');
+                return;
+            }
+
+            // Simulação de envio bem-sucedido
+            alert('Pedido enviado com sucesso! Entraremos em contato em breve para confirmar.');
+            this.reset();
+        });
+    </script>
+</body>
+
+</html>
